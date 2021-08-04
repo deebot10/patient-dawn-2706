@@ -3,3 +3,7 @@
 <p><%= @competition.name%></p>
 <p><%= @competition.location%></p>
 <p><%= @competition.sport%></p>
+
+<% @competition.teams.each do |team|%>
+  <p><%= team.nickname %></p>
+<%end%>
