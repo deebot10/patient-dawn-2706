@@ -6,7 +6,7 @@ RSpec.describe 'Competition Index' do
     @competition_2 = Competition.create!(name: 'Womans Regional', location: 'Houston', sport: 'Baseball')  
     @competition_3 = Competition.create!(name: 'Nationals', location: 'Chicago', sport: 'Water Polo')  
 
-    visit '/competitions'
+    visit competitions_path
   end
 
   describe 'Story1' do
@@ -15,6 +15,13 @@ RSpec.describe 'Competition Index' do
       expect(page).to have_content(@competition_1.name)
       expect(page).to have_content(@competition_2.name)
       expect(page).to have_content(@competition_3.name)
+    end
+
+    it 'has links to competion show page' do
+
+      expect(page).to have_link(@competition_1.name)
+      expect(page).to have_link(@competition_2.name)
+      expect(page).to have_link(@competition_3.name)
     end
   end
 end

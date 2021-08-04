@@ -1,5 +1,5 @@
 <h1>Competition Index</h1>
 
 <% @competitions.each do |competition| %>
-  <p><%= competition.name%></p>
+  <%= link_to competition.name, competition_path(competition.id) %>
 <%end%>
