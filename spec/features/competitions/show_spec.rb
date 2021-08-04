@@ -40,15 +40,17 @@ RSpec.describe 'Competition Show Page' do
 
       click_link('Register a New Team')
 
-      expect(current_path).to eq('/teams/new')
+      expect(current_path).to eq("/competitions/#{@competition.id}/teams/new")
 
-      fill_in :hometown, with: 'Indiana'
-      fill_in :nickname, with: 'Pacers'
+      fill_in 'Hometown', with: 'Indiana'
+      fill_in 'Nickname', with: 'Pacers'
       click_on 'Submit'
 
       expect(current_path).to eq(competition_path(@competition.id))
+     
+      
+      expect(page).to have_content('Pacers')
 
-      expect(page).to have_content('Indiana')
     end
   end
 end

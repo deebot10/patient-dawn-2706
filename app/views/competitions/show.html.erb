@@ -1,6 +1,6 @@
 <h1>Competition Show</h1>
 
-<%= link_to 'Register a New Team', '/teams/new'%>
+<%= link_to 'Register a New Team', new_competition_team_path(@competition)%>
 
 <p><%= @competition.name%></p>
 <p><%= @competition.location%></p>

@@ -1,16 +1,17 @@
 class TeamsController < ApplicationController
-  def new;end
+
+  def new
+    @competition = Competition.find(params[:competition_id])
+  end
 
   def create
-    competition = Competition.find(params[:id])
-    team = Team.new(team_params)
-    if team.save
-      redirect_to competition_path(competition.id)  
-    end
+    competition = Competition.find(params[:competition_id])
+    team = competition.teams.create!(team_params)
+    redirect_to competition_path(competition.id)  
   end
 
   private
   def team_params
-    params.permit(:hometown, :nickname)
+    params.require(:team).permit(:hometown, :nickname)
   end
 end
