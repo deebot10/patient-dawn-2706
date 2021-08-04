@@ -33,4 +33,22 @@ RSpec.describe 'Competition Show Page' do
       expect(page).to have_content("Average age of players: 23")
     end
   end
+
+  describe 'Story3' do
+    it 'has a form to register a new team' do
+      expect(page).to have_link('Register a New Team')
+
+      click_link('Register a New Team')
+
+      expect(current_path).to eq('/teams/new')
+
+      fill_in :hometown, with: 'Indiana'
+      fill_in :nickname, with: 'Pacers'
+      click_on 'Submit'
+
+      expect(current_path).to eq(competition_path(@competition.id))
+
+      expect(page).to have_content('Indiana')
+    end
+  end
 end
