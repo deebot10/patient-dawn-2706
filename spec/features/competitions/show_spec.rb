@@ -30,8 +30,7 @@ RSpec.describe 'Competition Show Page' do
     end
 
     it 'has the average age od all players in the competition' do
-      save_and_open_page
-      expect(page).to have_content("Average age of players: 22.6666666666666667")
+      expect(page).to have_content("Average age of players: 23")
     end
   end
 end
